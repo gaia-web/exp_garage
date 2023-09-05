@@ -13,9 +13,10 @@ export class GaiaHeaderElement extends LitElement {
   static styles = css`
     :host {
       display: flex;
-      position: sticky;
+      position: relative;
       width: auto;
       height: fit-content;
+      top: 0;
       left: 0;
       right: 0;
       padding: 10px;
@@ -23,7 +24,7 @@ export class GaiaHeaderElement extends LitElement {
     }
 
     :host([sticky]) {
-      top: 0;
+      position: sticky;
     }
 
     slot {
