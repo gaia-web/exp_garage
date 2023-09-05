@@ -1,5 +1,6 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { MOBILE_BREAKPOINT } from "../utils/breakpoint";
 
 export type GaiaHeaderPosition = "absolute" | "fixed" | "sticky";
 
@@ -75,7 +76,7 @@ export class GaiaHeaderElement extends LitElement {
       grid-column: 3;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
       :host {
         grid-template-rows: 1fr fit-content;
         grid-template-columns: fit-content auto auto;
