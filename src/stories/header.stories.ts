@@ -24,7 +24,7 @@ export default {
   render: (args) => html`
     <gaia-header ?sticky=${args.sticky} style="background: azure;">
       <div slot="start">Start</div>
-      <div>Noarmal</div>
+      <div>Normal</div>
       <div slot="end">End</div>
     </gaia-header>
     <main>
