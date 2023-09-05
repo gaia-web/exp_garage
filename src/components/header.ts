@@ -5,7 +5,8 @@ export type GaiaHeaderPosition = "absolute" | "fixed" | "sticky";
 
 /**
  * Header that is shown on the top of page.
- * @slot collapsible - Content would be collapsed in mobile view and expanded in desktop view.
+ * @slot menu-toggle-icon - The icon menu toggle button in the mobile view.
+ * @slot collapsible - Content would be collapsed in the mobile view and expanded in the desktop view.
  * @slot extra - Slot used to put extra stuffs. The width fits the content.
  */
 @customElement("gaia-header")
