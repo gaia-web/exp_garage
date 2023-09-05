@@ -48,6 +48,6 @@ export default {
 export const Demo: StoryObj<MyArgs> = {
   name: "Default",
   args: {
-    sticky: true,
+    sticky: false,
   },
 };
