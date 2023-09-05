@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 
 import "../../src/components/header";
+import "../../src/components/nav";
 
 type MyArgs = {
   sticky: boolean;
@@ -30,7 +31,13 @@ export default {
     </style>
     <gaia-header ?sticky=${args.sticky} ?expanded=${args.expanded}>
       <div><b style="font-size: 2rem">Logo</b></div>
-      <div slot="collapsible">Nav items</div>
+      <div slot="collapsible">
+        <gaia-nav>
+          ${["One", "Two", "Three", "Four", "Five"].map(
+            (label) => html`<a href="#">${label}</a>`
+          )}
+        </gaia-nav>
+      </div>
       <div slot="extra">Extras</div>
     </gaia-header>
     <main>
