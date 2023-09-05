@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 import "../../src/components/header";
 import "../../src/components/nav";
+import "../../src/components/nav-item";
 
 type MyArgs = {
   sticky: boolean;
@@ -33,8 +35,32 @@ export default {
       <div><b style="font-size: 2rem">Logo</b></div>
       <div slot="collapsible">
         <gaia-nav>
-          ${["One", "Two", "Three", "Four", "Five"].map(
-            (label) => html`<a href="#">${label}</a>`
+          ${[
+            "Normal 1",
+            "Normal 2",
+            "Nested",
+            "Normal 3",
+            "Normal 4",
+            "Normal 5",
+          ].map(
+            (label) =>
+              html`<gaia-nav-item
+                href=${ifDefined(
+                  label.startsWith("Nested") ? undefined : "https://bing.com"
+                )}
+                target="_blank"
+                >${label}${label.startsWith("Nested")
+                  ? ["One", "Two", "Three"].map(
+                      (label) =>
+                        html`<gaia-nav-item
+                          href="https://bing.com"
+                          target="_blank"
+                          slot="nested"
+                          >${label}</gaia-nav-item
+                        >`
+                    )
+                  : ""}</gaia-nav-item
+              >`
           )}
         </gaia-nav>
       </div>
@@ -58,7 +84,7 @@ export default {
   `,
 } satisfies Meta<MyArgs>;
 
-export const Demo: StoryObj<MyArgs> = {
+export const Default: StoryObj<MyArgs> = {
   name: "Default",
   args: {
     sticky: false,
