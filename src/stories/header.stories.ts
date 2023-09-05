@@ -5,6 +5,7 @@ import "../../src/components/header";
 
 type MyArgs = {
   sticky: boolean;
+  expanded: boolean;
 };
 
 export default {
@@ -22,10 +23,15 @@ export default {
   },
   argTypes: {},
   render: (args) => html`
-    <gaia-header ?sticky=${args.sticky} style="background: azure;">
-      <div slot="start">Start</div>
-      <div>Normal</div>
-      <div slot="end">End</div>
+    <style>
+      :root {
+        background: hsl(0, 0%, 96%);
+      }
+    </style>
+    <gaia-header ?sticky=${args.sticky} ?expanded=${args.expanded}>
+      <div><b style="font-size: 2rem">Logo</b></div>
+      <div slot="collapsible">Nav items</div>
+      <div slot="extra">Extras</div>
     </gaia-header>
     <main>
       ${new Array(20)
@@ -49,5 +55,6 @@ export const Demo: StoryObj<MyArgs> = {
   name: "Default",
   args: {
     sticky: false,
+    expanded: false,
   },
 };
