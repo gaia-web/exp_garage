@@ -9,16 +9,16 @@ import { MOBILE_BREAKPOINT } from "../utils/breakpoint";
 export class GaiaNavElement extends LitElement {
   static styles = css`
     :host {
+      box-sizing: border-box;
       display: block;
       position: relative;
       height: fit-content;
-      width: fit-content
+      width: fit-content;
     }
 
     slot {
       display: flex;
       flex-direction: row;
-      gap: 5px;
     }
 
     ::slotted(*) {
@@ -26,6 +26,10 @@ export class GaiaNavElement extends LitElement {
     }
 
     @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+      :host {
+        width: auto;
+      }
+
       slot {
         flex-direction: column;
       }

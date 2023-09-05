@@ -14,6 +14,7 @@ export type GaiaHeaderPosition = "absolute" | "fixed" | "sticky";
 export class GaiaHeaderElement extends LitElement {
   static styles = css`
     :host {
+      box-sizing: border-box;
       position: relative;
       width: auto;
       height: fit-content;
