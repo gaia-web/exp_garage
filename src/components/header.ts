@@ -45,7 +45,7 @@ export class GaiaHeaderElement extends LitElement {
    * Whether the header sticky to the top.
    */
   @property({ type: Boolean, reflect: true })
-  sticky = true;
+  sticky = false;
 
   render() {
     return html`
