@@ -29,6 +29,7 @@ export class GaiaCarouselElement extends LitElement {
 
     ::slotted(*) {
       flex: 1;
+      min-width: 0;
     }
 
     #button-container > button {
