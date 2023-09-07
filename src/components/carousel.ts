@@ -190,3 +190,9 @@ export class GaiaCarouselElement extends LitElement {
     }
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "gaia-carousel": GaiaCarouselElement;
+  }
+}
