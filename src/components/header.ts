@@ -24,6 +24,7 @@ export class GaiaHeaderElement extends LitElement {
       right: 0;
       padding: 5px;
       background: var(--gaia-background, hsl(0, 0%, 100%));
+      z-index: 1;
     }
 
     :host {
