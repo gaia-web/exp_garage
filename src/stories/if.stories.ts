@@ -13,7 +13,7 @@ export default {
   component: "gaia-if",
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
   argTypes: {
     condition: { control: "select", options: ["", "chinese", "morse"] },
