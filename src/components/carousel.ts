@@ -32,34 +32,36 @@ export class GaiaCarouselElement extends LitElement {
       min-width: 0;
     }
 
-    #button-container > button {
-      display: flex;
-      position: absolute;
-      padding: 0.5em;
-      top: 50%;
-      transform: translateY(-50%);
-      background: hsl(0, 0%, 100%, 0.5);
-      border: none;
-      border-radius: 10px;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
+    #button-container {
+      & > button {
+        display: flex;
+        position: absolute;
+        padding: 0.5em;
+        top: 50%;
+        transform: translateY(-50%);
+        background: hsl(0, 0%, 100%, 0.5);
+        border: none;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
 
-    #button-container > button:hover {
-      filter: contrast(0.7);
-    }
+        &:hover {
+          filter: contrast(0.7);
+        }
 
-    #button-container > button:active {
-      filter: contrast(0.5);
-    }
+        &:active {
+          filter: contrast(0.5);
+        }
 
-    #button-container > button.left {
-      left: 10px;
-    }
+        &.left {
+          left: 10px;
+        }
 
-    #button-container > button.right {
-      right: 10px;
+        &.right {
+          right: 10px;
+        }
+      }
     }
 
     #indicator-container {
@@ -72,18 +74,18 @@ export class GaiaCarouselElement extends LitElement {
       width: fit-content;
       background: hsl(0, 0%, 50%, 0.5);
       border-radius: 10px;
-    }
 
-    #indicator-container > .indicator {
-      --size: 10px;
+      & > .indicator {
+        --size: 10px;
 
-      flex: 1;
-      height: var(--size);
-      width: var(--size);
-      margin: 3px;
-      background: hsl(0, 0%, 100%);
-      border-radius: 100%;
-      cursor: pointer;
+        flex: 1;
+        height: var(--size);
+        width: var(--size);
+        margin: 3px;
+        background: hsl(0, 0%, 100%);
+        border-radius: 100%;
+        cursor: pointer;
+      }
     }
   `;
 

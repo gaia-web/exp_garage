@@ -29,16 +29,16 @@ export class GaiaCardElement extends LitElement {
       position: relative;
       width: 100%;
       padding: 10px;
-    }
 
-    slot[name="header"] {
-      position: sticky;
-      top: 0;
-    }
-
-    slot[name="footer"] {
-      position: sticky;
-      bottom: 0;
+      &[name="header"] {
+        position: sticky;
+        top: 0;
+      }
+      
+      &[name="footer"] {
+        position: sticky;
+        bottom: 0;
+      }
     }
   `;
 

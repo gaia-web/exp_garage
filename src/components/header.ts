@@ -15,6 +15,7 @@ export class GaiaHeaderElement extends LitElement {
   static styles = css`
     :host {
       box-sizing: border-box;
+      display: grid;
       position: relative;
       width: auto;
       height: fit-content;
@@ -25,12 +26,13 @@ export class GaiaHeaderElement extends LitElement {
       padding: 5px;
       background: var(--gaia-background, hsl(0, 0%, 100%));
       z-index: 1;
-    }
-
-    :host {
-      display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: auto 1fr auto;
+
+      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+        grid-template-rows: 1fr fit-content;
+        grid-template-columns: fit-content auto auto;
+      }
     }
 
     :host([sticky]) {
@@ -45,78 +47,71 @@ export class GaiaHeaderElement extends LitElement {
       display: none;
       cursor: pointer;
       user-select: none;
+
+      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+        display: block;
+        grid-row: 1;
+        grid-column: 1;
+      }
     }
 
     #default-menu-toggle-icon {
       padding: 10px;
       border-radius: 10px;
-    }
 
-    #default-menu-toggle-icon:hover {
-      backdrop-filter: brightness(0.9);
-    }
+      &:hover {
+        backdrop-filter: brightness(0.9);
+      }
 
-    #default-menu-toggle-icon:active {
-      backdrop-filter: brightness(0.8);
+      &:active {
+        backdrop-filter: brightness(0.8);
+      }
     }
 
     slot {
       display: block;
       position: relative;
       padding: 10px;
-    }
 
-    slot:not([name]) {
-      grid-column: 1;
-    }
-
-    slot[name="collapsible"] {
-      grid-column: 2;
-    }
-
-    slot[name="extra"] {
-      grid-column: 3;
-    }
-
-    @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
-      :host {
-        grid-template-rows: 1fr fit-content;
-        grid-template-columns: fit-content auto auto;
-      }
-
-      #menu-toggle-button {
-        display: block;
-        grid-row: 1;
+      &:not([name]) {
         grid-column: 1;
+
+        @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+          grid-row: 1;
+          grid-column: 2;
+        }
       }
 
-      slot:not([name]) {
-        grid-row: 1;
+      &[name="collapsible"] {
         grid-column: 2;
+
+        @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+          display: grid;
+          grid-template-rows: 1fr;
+          overflow-y: hidden;
+          grid-row: 2;
+          grid-column: 1 / span 3;
+          transition: grid-template-rows 0.3s;
+
+          &::slotted(*) {
+            min-height: 0;
+          }
+
+          :host(:not([expanded])) & {
+            grid-template-rows: 0fr;
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+        }
       }
 
-      slot[name="collapsible"] {
-        display: grid;
-        grid-template-rows: 1fr;
-        overflow-y: hidden;
-        grid-row: 2;
-        grid-column: 1 / span 3;
-        transition: grid-template-rows 0.3s;
-      }
-
-      :host(:not([expanded])) slot[name="collapsible"] {
-        grid-template-rows: 0fr;
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-
-      slot[name="collapsible"]::slotted(*) {
-        min-height: 0;
-      }
-
-      slot[name="extra"] {
-        grid-row: 1;
+      &[name="extra"] {
         grid-column: 3;
+
+        @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+          grid-row: 1;
+          grid-column: 3;
+        }
       }
     }
   `;

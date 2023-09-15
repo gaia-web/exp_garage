@@ -39,14 +39,14 @@ export class GaiaCollapseElement extends LitElement {
 
     [part~="header"] {
       cursor: pointer;
-    }
 
-    [part~="header"]:hover {
-      filter: brightness(0.9);
-    }
+      &:hover {
+        filter: brightness(0.9);
+      }
 
-    [part~="header"]:active {
-      filter: brightness(0.8);
+      &:active {
+        filter: brightness(0.8);
+      }
     }
 
     #content-wrapper {

@@ -14,25 +14,23 @@ export class GaiaNavElement extends LitElement {
       position: relative;
       height: fit-content;
       width: fit-content;
+
+      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+        width: auto;
+      }
     }
 
     slot {
       display: flex;
       flex-direction: row;
+
+      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+        flex-direction: column;
+      }
     }
 
     ::slotted(*) {
       flex: auto auto auto;
-    }
-
-    @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
-      :host {
-        width: auto;
-      }
-
-      slot {
-        flex-direction: column;
-      }
     }
   `;
 
