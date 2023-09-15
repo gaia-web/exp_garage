@@ -60,6 +60,9 @@ export class GaiaNavItemElement extends LitElement {
     }
   `;
 
+  /**
+   * @internal
+   */
   #popoverRef: Ref<HTMLSlotElement> = createRef();
 
   /**
