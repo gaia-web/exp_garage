@@ -59,6 +59,7 @@ export default {
         </gaia-dynamic-scroll-item>
       </div>
       <div class="page" style="--page-index: 1;">
+        <!-- This one's dynamic style is set by JavaScript property. -->
         <gaia-dynamic-scroll-item
           style="top: 50%;"
           .dynamicStyle=${({
@@ -72,6 +73,14 @@ export default {
           })}
         >
           Fade-In
+        </gaia-dynamic-scroll-item>
+      </div>
+      <div class="page" style="--page-index: 2;">
+        <gaia-dynamic-scroll-item
+          style="top: 50%; transform-origin: left;"
+          dynamic-style=${`scale: calc((max(calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) + 1 - var(--page-index)), 0) + 1) * 2)`}
+        >
+          Become Larger
         </gaia-dynamic-scroll-item>
       </div>
     </gaia-dynamic-scroll>

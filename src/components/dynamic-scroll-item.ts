@@ -32,8 +32,7 @@ export class GaiaDynamicScrollItemElement extends LitElement {
    */
   readonly #staticStyleSheets = [
     css`
-      :host,
-      slot {
+      :host {
         display: block;
         position: relative;
         height: fit-content;
@@ -158,7 +157,7 @@ export class GaiaDynamicScrollItemElement extends LitElement {
       }
     }
     this.#dynamicStyleSheet.replaceSync(/* css */ `
-      slot {
+      :host {
         ${styleCSSString}
       }
     `);
