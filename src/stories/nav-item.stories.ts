@@ -18,7 +18,7 @@ export default {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (args) =>
     html`
-      <gaia-nav-item href="https://bing.com" target="_blank"
+      <gaia-nav-item href="javascript:alert('You clicked a link.')"
         >Nav Item</gaia-nav-item
       >
     `,
@@ -36,13 +36,19 @@ export const Nested: StoryObj<MyArgs> = {
   render: (args) => html`
     <gaia-nav-item>
       Nested Nav Item
-      <gaia-nav-item href="https://bing.com" target="_blank" slot="nested"
+      <gaia-nav-item
+        href="javascript:alert('You clicked a link.')"
+        slot="nested"
         >One</gaia-nav-item
       >
-      <gaia-nav-item href="https://bing.com" target="_blank" slot="nested"
+      <gaia-nav-item
+        href="javascript:alert('You clicked a link.')"
+        slot="nested"
         >Two</gaia-nav-item
       >
-      <gaia-nav-item href="https://bing.com" target="_blank" slot="nested"
+      <gaia-nav-item
+        href="javascript:alert('You clicked a link.')"
+        slot="nested"
         >Three</gaia-nav-item
       >
     </gaia-nav-item>

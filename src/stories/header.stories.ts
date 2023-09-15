@@ -46,15 +46,15 @@ export default {
             (label) =>
               html`<gaia-nav-item
                 href=${ifDefined(
-                  label.startsWith("Nested") ? undefined : "https://bing.com"
+                  label.startsWith("Nested")
+                    ? undefined
+                    : "javascript:alert('You clicked a link.')"
                 )}
-                target="_blank"
                 >${label}${label.startsWith("Nested")
                   ? ["One", "Two", "Three"].map(
                       (label) =>
                         html`<gaia-nav-item
-                          href="https://bing.com"
-                          target="_blank"
+                          href="javascript:alert('You clicked a link.')"
                           slot="nested"
                           >${label}</gaia-nav-item
                         >`
