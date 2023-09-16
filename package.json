@@ -1,11 +1,14 @@
 {
-  "name": "garage",
+  "name": "@gaia/garage",
   "description": "garage",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.js",
-  "files": ["dist", "types"],
+  "files": [
+    "dist",
+    "types"
+  ],
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
