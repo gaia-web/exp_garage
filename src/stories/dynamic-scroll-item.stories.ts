@@ -29,6 +29,10 @@ export default {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (args) => html`
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       gaia-dynamic-scroll {
         height: 100vh;
         width: 100%;
@@ -40,6 +44,15 @@ export default {
 
       .page {
         height: 100%;
+      }
+
+      .progress-fab {
+        position: absolute;
+        border: none;
+        aspect-ratio: 1/1;
+        width: 50px;
+        background: transparent;
+        cursor: pointer;
       }
     </style>
     <gaia-dynamic-scroll>
@@ -83,6 +96,20 @@ export default {
           Become Larger
         </gaia-dynamic-scroll-item>
       </div>
+      <button
+        class="progress-fab"
+        popover="manual"
+        @click=${() => alert("Progress FAB clicked.")}
+      >
+        <gaia-dynamic-scroll-item
+          style="border-radius: 50%; height: 100%; width: 100%; padding: 3px; --total-pages: 3; --progress-degree: calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}, 0) / (var(--total-pages) - 1) * 360deg)"
+          dynamic-style=${`background: conic-gradient(red 0deg, red var(--progress-degree), grey var(--progress-degree));`}
+        >
+        </gaia-dynamic-scroll-item>
+      </button>
+      <script>
+        document.querySelector(".progress-fab").togglePopover(true);
+      </script>
     </gaia-dynamic-scroll>
   `,
 } satisfies Meta<MyArgs>;
