@@ -27,7 +27,8 @@ export class GaiaHeaderElement extends LitElement {
       background: var(--gaia-background, hsl(0, 0%, 100%));
       z-index: 1;
       grid-template-rows: 1fr;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: minmax(0px, auto) minmax(0px, 1fr) minmax(0px, auto);
+      overflow: hidden;
 
       @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
         grid-template-rows: 1fr fit-content;

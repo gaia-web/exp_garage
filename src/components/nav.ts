@@ -14,10 +14,15 @@ export class GaiaNavElement extends LitElement {
       position: relative;
       height: fit-content;
       width: fit-content;
+      max-width: 100%;
 
       @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
         width: auto;
       }
+    }
+
+    nav {
+      overflow-y: auto;
     }
 
     slot {
