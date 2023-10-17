@@ -42,20 +42,24 @@ export class GaiaNavItemElement extends LitElement {
       &:not([name]) {
         user-select: none;
       }
+    }
 
-      &[name="nested"] {
-        margin: 5px;
-        width: fit-content;
-        border: none;
-        border-radius: 10px;
-        box-shadow: 5px 10px 20px -5px hsl(0, 0%, 0%, 0.5);
-        top: var(--popover-top);
-        left: var(--popover-left);
+    dialog#nested-content {
+      margin: 5px;
+      width: fit-content;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 5px 10px 20px -5px hsl(0, 0%, 0%, 0.5);
+      top: var(--popover-top);
+      left: var(--popover-left);
 
-        @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
-          width: auto;
-          left: 0;
-        }
+      &::backdrop {
+        background: transparent;
+      }
+
+      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+        width: auto;
+        left: 0;
       }
     }
   `;
@@ -63,7 +67,7 @@ export class GaiaNavItemElement extends LitElement {
   /**
    * @internal
    */
-  #popoverRef: Ref<HTMLSlotElement> = createRef();
+  #dialogRef: Ref<HTMLDialogElement> = createRef();
 
   /**
    * Contains a URL or a URL fragment that the hyperlink points to.
@@ -87,31 +91,31 @@ export class GaiaNavItemElement extends LitElement {
           if (!this.querySelector('[slot="nested"]')) {
             return;
           }
-          const popoverElement = this.#popoverRef?.value;
-          if (!popoverElement) {
+          const dialogElement = this.#dialogRef?.value;
+          if (!dialogElement) {
             return;
           }
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (popoverElement as any).togglePopover();
+          if (dialogElement.open) {
+            dialogElement.close();
+          } else {
+            dialogElement.showModal();
+          }
 
           // TODO use CSS anchor positioning
           const { top, left, height } = (
             currentTarget as HTMLElement
           ).getBoundingClientRect();
-          popoverElement.style.setProperty(
+          dialogElement.style.setProperty(
             "--popover-top",
             `${top + height + 5}px`
           );
-          popoverElement.style.setProperty("--popover-left", `${left}px`);
+          dialogElement.style.setProperty("--popover-left", `${left}px`);
         }}
       >
         <slot></slot>
-        <slot
-          ${ref(this.#popoverRef)}
-          popover
-          name="nested"
-          @slotchange=${() => {}}
-        ></slot>
+        <dialog id="nested-content" ${ref(this.#dialogRef)}>
+          <slot name="nested" @slotchange=${() => {}}></slot>
+        </dialog>
       </a>
     `;
   }
