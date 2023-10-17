@@ -15,8 +15,10 @@ export class GaiaNavElement extends LitElement {
       height: fit-content;
       width: fit-content;
       max-width: 100%;
+    }
 
-      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+    @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+      :host {
         width: auto;
       }
     }

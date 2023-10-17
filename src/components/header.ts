@@ -27,12 +27,13 @@ export class GaiaHeaderElement extends LitElement {
       background: var(--gaia-background, hsl(0, 0%, 100%));
       z-index: 1;
       grid-template-rows: 1fr;
-      grid-template-columns: minmax(0px, auto) minmax(0px, 1fr) minmax(0px, auto);
+      grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
       overflow: hidden;
+    }
 
-      @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
-        grid-template-rows: 1fr fit-content;
-        grid-template-columns: fit-content auto auto;
+    @media screen and (max-width: ${MOBILE_BREAKPOINT}px) {
+      :host {
+        grid-template-rows: 1fr minmax(0, auto);
       }
     }
 
