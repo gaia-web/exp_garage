@@ -53,6 +53,10 @@ export class GaiaNavItemElement extends LitElement {
       top: var(--popover-top);
       left: var(--popover-left);
 
+      &:focus {
+        outline: none;
+      }
+
       &::backdrop {
         background: transparent;
       }
