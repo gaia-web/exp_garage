@@ -51,7 +51,12 @@ export default {
                     : "javascript:alert('You clicked a link.')"
                 )}
                 >${label}${label.startsWith("Nested")
-                  ? ["One", "Two", "Three"].map(
+                  ? [
+                      "One",
+                      "Two",
+                      "Three",
+                      "This is a very very very very very very very very very very very long one",
+                    ].map(
                       (label) =>
                         html`<gaia-nav-item
                           href="javascript:alert('You clicked a link.')"

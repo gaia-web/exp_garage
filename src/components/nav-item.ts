@@ -23,8 +23,7 @@ export class GaiaNavItemElement extends LitElement {
       all: unset;
       display: block;
       position: relative;
-      min-width: max-content;
-      width: auto;
+      width: fit-content;
       cursor: pointer;
       border-radius: 10px;
       padding: 10px;

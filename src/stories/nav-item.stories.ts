@@ -51,6 +51,13 @@ export const Nested: StoryObj<MyArgs> = {
         slot="nested"
         >Three</gaia-nav-item
       >
+      <gaia-nav-item
+        href="javascript:alert('You clicked a link.')"
+        slot="nested"
+      >
+        This is a very very very very very very very very very very very long
+        one
+      </gaia-nav-item>
     </gaia-nav-item>
   `,
 };
