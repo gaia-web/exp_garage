@@ -145,17 +145,16 @@ export class GaiaCarouselElement extends LitElement {
   }
 
   #renderSVGArrow(options?: { fill?: string; direction?: "left" | "right" }) {
-    return html`<svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      transform=${options?.direction === "right" ? "rotate(180)" : ""}
-    >
-      <path
-        d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
-        fill=${options?.fill ?? "hsl(0, 0%, 0%)"}
-      />
+    return html`<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <g
+        transform-origin="center"
+        transform=${options?.direction === "right" ? "rotate(180)" : ""}
+      >
+        <path
+          d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
+          fill=${options?.fill ?? "hsl(0, 0%, 0%)"}
+        />
+      </g>
     </svg>`;
   }
 
