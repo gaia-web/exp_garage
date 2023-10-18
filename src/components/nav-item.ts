@@ -23,7 +23,8 @@ export class GaiaNavItemElement extends LitElement {
       all: unset;
       display: block;
       position: relative;
-      width: fit-content;
+      height: auto;
+      width: auto;
       cursor: pointer;
       border-radius: 10px;
       padding: 10px;
@@ -40,6 +41,10 @@ export class GaiaNavItemElement extends LitElement {
     slot {
       &:not([name]) {
         user-select: none;
+      }
+
+      &[name="nested"] {
+        display: block;
       }
     }
 
