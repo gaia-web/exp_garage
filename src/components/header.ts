@@ -94,15 +94,23 @@ export class GaiaHeaderElement extends LitElement {
           grid-row: 2;
           grid-column: 1 / span 3;
           transition: grid-template-rows 0.3s;
+          max-height: 100%;
 
-          &::slotted(*) {
-            min-height: 0;
-          }
-
+          // &::slotted(*) {
+          //   max-height: 100vh;
+          //   transition: max-height 0.3s;
+          // }
+          
           :host(:not([expanded])) & {
-            grid-template-rows: 0fr;
+            /* TODO temp fix: use '0' instead of '0fr' for Safari, but the transition no longer works.*/
+            grid-template-rows: 0;
             padding-top: 0;
             padding-bottom: 0;
+            max-height: 0;
+
+            // &::slotted(*) {
+            //   max-height: 0vh;
+            // }
           }
         }
       }

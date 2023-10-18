@@ -37,7 +37,7 @@ export class GaiaNavElement extends LitElement {
     }
 
     ::slotted(*) {
-      flex: auto auto auto;
+      flex: 0 0 fit-content;
     }
   `;
 
