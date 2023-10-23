@@ -121,13 +121,13 @@ export class GaiaHeaderElement extends LitElement {
    * Whether the header sticky to the top.
    */
   @property({ type: Boolean, reflect: true })
-  sticky = false;
+  accessor sticky = false;
 
   /**
    * Whether the header is collapsed in the mobile view.
    */
   @property({ type: Boolean, reflect: true })
-  expanded = false;
+  accessor expanded = false;
 
   render() {
     return html`

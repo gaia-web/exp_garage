@@ -14,7 +14,7 @@ export class GaiaIfElement extends LitElement {
    * The condition that determines which child element will be rendered.
    */
   @property({ reflect: true })
-  condition = "";
+  accessor condition = "";
 
   render() {
     return html` <slot name=${ifDefined(this.condition)}></slot> `;
