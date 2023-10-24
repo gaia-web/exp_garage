@@ -27,7 +27,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "lit": "^2.7.6"
+    "lit": "^3.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.4",
@@ -45,7 +45,7 @@
     "react-dom": "^18.2.0",
     "storybook": "^7.4.0",
     "tiny-glob": "0.2.9",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
   }
 }
