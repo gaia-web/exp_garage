@@ -59,7 +59,7 @@ export class GaiaCollapseElement extends LitElement {
    * Whether the collapse is expanded.
    */
   @property({ type: Boolean, reflect: true })
-  accessor expanded = false;
+  expanded = false;
 
   render() {
     return html`

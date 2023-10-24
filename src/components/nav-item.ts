@@ -81,13 +81,13 @@ export class GaiaNavItemElement extends LitElement {
    * Contains a URL or a URL fragment that the hyperlink points to.
    */
   @property({ reflect: true })
-  accessor href: string | undefined;
+  href?: string;
 
   /**
    * Specifies where to display the linked URL.
    */
   @property({ reflect: true })
-  accessor target: string | undefined;
+  target?: string;
 
   render() {
     return html`

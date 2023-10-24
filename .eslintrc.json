@@ -7,8 +7,7 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:lit/recommended",
-        "plugin:wc/recommended",
-        "plugin:storybook/recommended"
+        "plugin:wc/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -18,5 +17,6 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "rules": {}
+    "rules": {
+    }
 }

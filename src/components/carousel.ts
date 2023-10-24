@@ -98,13 +98,13 @@ export class GaiaCarouselElement extends LitElement {
    * The displayed slide index, which starts from 0.
    */
   @property({ attribute: "current-index", type: Number, reflect: true })
-  accessor currentIndex = 0;
+  currentIndex = 0;
 
   /**
    * The timeout of automatically played slides.
    */
   @property({ type: Number, reflect: true })
-  accessor timeout = 5;
+  timeout = 5;
 
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has("currentIndex")) {
