@@ -12,8 +12,8 @@ export class GaiaNavElement extends LitElement {
       box-sizing: border-box;
       display: block;
       position: relative;
-      height: fit-content;
-      width: fit-content;
+      height: auto;
+      width: auto;
       max-width: 100%;
     }
 

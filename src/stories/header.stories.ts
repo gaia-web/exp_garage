@@ -33,42 +33,40 @@ export default {
     </style>
     <gaia-header ?sticky=${args.sticky} ?expanded=${args.expanded}>
       <div><b style="font-size: 2rem">Logo</b></div>
-      <div slot="collapsible">
-        <gaia-nav>
-          ${[
-            "Normal 1",
-            "Normal 2",
-            "Nested",
-            "Normal 3",
-            "Normal 4",
-            "Normal 5",
-          ].map(
-            (label) =>
-              html`<gaia-nav-item
-                href=${ifDefined(
-                  label.startsWith("Nested")
-                    ? undefined
-                    : "javascript:alert('You clicked a link.')"
-                )}
-                >${label}${label.startsWith("Nested")
-                  ? [
-                      "One",
-                      "Two",
-                      "Three",
-                      "This is a very very very very very very very very very very very long one",
-                    ].map(
-                      (label) =>
-                        html`<gaia-nav-item
-                          href="javascript:alert('You clicked a link.')"
-                          slot="nested"
-                          >${label}</gaia-nav-item
-                        >`
-                    )
-                  : ""}</gaia-nav-item
-              >`
-          )}
-        </gaia-nav>
-      </div>
+      <gaia-nav slot="collapsible">
+        ${[
+          "Normal 1",
+          "Normal 2",
+          "Nested",
+          "Normal 3",
+          "Normal 4",
+          "Normal 5",
+        ].map(
+          (label) =>
+            html`<gaia-nav-item
+              href=${ifDefined(
+                label.startsWith("Nested")
+                  ? undefined
+                  : "javascript:alert('You clicked a link.')"
+              )}
+              >${label}${label.startsWith("Nested")
+                ? [
+                    "One",
+                    "Two",
+                    "Three",
+                    "This is a very very very very very very very very very very very long one",
+                  ].map(
+                    (label) =>
+                      html`<gaia-nav-item
+                        href="javascript:alert('You clicked a link.')"
+                        slot="nested"
+                        >${label}</gaia-nav-item
+                      >`
+                  )
+                : ""}</gaia-nav-item
+            >`
+        )}
+      </gaia-nav>
       <div slot="extra">Extras</div>
     </gaia-header>
     <main>
