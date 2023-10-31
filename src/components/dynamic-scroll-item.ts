@@ -3,11 +3,13 @@ import { customElement } from "lit/decorators.js";
 import {
   GaiaDynamicScrollElement,
   DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME,
+  DYNAMIC_SCROLL_VIEW_SCROLL_RATIO_CSS_VARIABLE_NAME,
 } from "./dynamic-scroll";
 
 export type GaiaDynamicScrollDetail = {
   containerElement?: GaiaDynamicScrollElement;
   scrollRatio: number;
+  viewScrollRatio: number;
   containerHeight: number;
   containerWidth: number;
 };
@@ -98,6 +100,11 @@ export class GaiaDynamicScrollItemElement extends LitElement {
           get scrollRatio() {
             return +getComputedStyle(itemElement).getPropertyValue(
               DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME
+            );
+          },
+          get viewScrollRatio() {
+            return +getComputedStyle(itemElement).getPropertyValue(
+              DYNAMIC_SCROLL_VIEW_SCROLL_RATIO_CSS_VARIABLE_NAME
             );
           },
           get containerHeight() {

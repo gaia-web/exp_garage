@@ -3,6 +3,8 @@ import { customElement } from "lit/decorators.js";
 
 export const DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME =
   "--gaia-dynamic-scroll-scroll-ratio";
+export const DYNAMIC_SCROLL_VIEW_SCROLL_RATIO_CSS_VARIABLE_NAME =
+  "--gaia-dynamic-scroll-view-scroll-ratio";
 export const DYNAMIC_SCROLL_CONTAINER_HEIGHT_CSS_VARIABLE_NAME =
   "--gaia-dynamic-scroll-container-height";
 export const DYNAMIC_SCROLL_CONTAINER_WIDTH_CSS_VARIABLE_NAME =
@@ -11,6 +13,7 @@ export const DYNAMIC_SCROLL_CONTAINER_WIDTH_CSS_VARIABLE_NAME =
 /**
  * A container where its content can be styled freely accroding to its scroll ratio.
  * @cssproperty --gaia-dynamic-scroll-scroll-ratio - The scroll ratio of container. It should be **READ ONLY**.
+ * @cssproperty --gaia-dynamic-scroll-view-scroll-ratio - The scroll ratio of container in the aspect of current view. It should be **READ ONLY**.
  * @cssproperty --gaia-dynamic-scroll-container-height - The height of container. It should be **READ ONLY**.
  * @cssproperty --gaia-dynamic-scroll-container-width - The width of container. It should be **READ ONLY**.
  */
@@ -51,10 +54,16 @@ export class GaiaDynamicScrollElement extends LitElement {
    * @internal
    */
   #scrolledHandler = () => {
-    const scrollRatio = this.scrollTop / this.clientHeight;
+    const scrollRatio =
+      this.scrollTop / (this.scrollHeight - this.clientHeight);
     this.style.setProperty(
       DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME,
       scrollRatio.toString()
+    );
+    const viewScrollRatio = this.scrollTop / this.clientHeight;
+    this.style.setProperty(
+      DYNAMIC_SCROLL_VIEW_SCROLL_RATIO_CSS_VARIABLE_NAME,
+      viewScrollRatio.toString()
     );
   };
 
