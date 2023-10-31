@@ -7,10 +7,11 @@ import {
   DYNAMIC_SCROLL_CONTAINER_HEIGHT_CSS_VARIABLE_NAME,
   DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME,
 } from "../components/dynamic-scroll";
-import { GaiaDynamicScrollStyleFunctionArgs } from "../components/dynamic-scroll-item";
+import { GaiaDynamicScrollDetail } from "../components/dynamic-scroll-item";
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type MyArgs = {};
+type MyArgs = {
+  onContainerScroll: (event: CustomEvent<GaiaDynamicScrollDetail>) => void;
+};
 
 export default {
   title: "Components/Dynamic Scroll Item",
@@ -25,7 +26,9 @@ export default {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    onContainerScroll: { action: "containerScroll" },
+  },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (args) => html`
     <style>
@@ -58,15 +61,20 @@ export default {
     <gaia-dynamic-scroll>
       <div class="page" style="--page-index: 0;">
         <gaia-dynamic-scroll-item
-          style="position: absolute; top: calc(100% - 3em);"
-          dynamic-style=${`translate: 0 calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) * var(${DYNAMIC_SCROLL_CONTAINER_HEIGHT_CSS_VARIABLE_NAME}) * 0.25)`}
+          style="position: absolute; top: calc(100% - 3em); translate: 0 calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) * var(${DYNAMIC_SCROLL_CONTAINER_HEIGHT_CSS_VARIABLE_NAME}) * 0.25);"
+          @containerScroll=${args.onContainerScroll}
         >
           Slower
         </gaia-dynamic-scroll-item>
-        <div style="position: absolute; top: calc(100% - 2em);">Normal</div>
+        <div
+          style="position: absolute; top: calc(100% - 2em);"
+          @containerScroll=${args.onContainerScroll}
+        >
+          Normal
+        </div>
         <gaia-dynamic-scroll-item
-          style="position: absolute; top: calc(100% - 1em);"
-          dynamic-style=${`translate: 0 calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) * var(${DYNAMIC_SCROLL_CONTAINER_HEIGHT_CSS_VARIABLE_NAME}) * -0.25)`}
+          style="position: absolute; top: calc(100% - 1em); translate: 0 calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) * var(${DYNAMIC_SCROLL_CONTAINER_HEIGHT_CSS_VARIABLE_NAME}) * -0.25);"
+          @containerScroll=${args.onContainerScroll}
         >
           Quicker
         </gaia-dynamic-scroll-item>
@@ -75,23 +83,22 @@ export default {
         <!-- This one's dynamic style is set by JavaScript property. -->
         <gaia-dynamic-scroll-item
           style="top: 50%;"
-          .dynamicStyle=${({
-            scrollRatio,
-            itemElement,
-          }: GaiaDynamicScrollStyleFunctionArgs) => ({
-            opacity:
-              scrollRatio +
-              1 -
-              +getComputedStyle(itemElement).getPropertyValue("--page-index"),
-          })}
+          @containerScroll=${(event) => {
+            args.onContainerScroll(event);
+            const { currentTarget, detail } = event;
+            currentTarget.style.opacity =
+              detail.scrollRatio +
+              0.5 -
+              +getComputedStyle(currentTarget).getPropertyValue("--page-index");
+          }}
         >
           Fade-In
         </gaia-dynamic-scroll-item>
       </div>
       <div class="page" style="--page-index: 2;">
         <gaia-dynamic-scroll-item
-          style="top: 50%; transform-origin: left;"
-          dynamic-style=${`scale: calc((max(calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) + 1 - var(--page-index)), 0) + 1) * 2)`}
+          style="top: 50%; transform-origin: left; scale: calc((max(calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}) + 1 - var(--page-index)), 0) + 1) * 2);"
+          @containerScroll=${args.onContainerScroll}
         >
           Become Larger
         </gaia-dynamic-scroll-item>
@@ -102,8 +109,8 @@ export default {
         @click=${() => alert("Progress FAB clicked.")}
       >
         <gaia-dynamic-scroll-item
-          style="border-radius: 50%; height: 100%; width: 100%; padding: 3px; --total-pages: 3; --progress-degree: calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}, 0) / (var(--total-pages) - 1) * 360deg)"
-          dynamic-style=${`background: conic-gradient(red 0deg, red var(--progress-degree), grey var(--progress-degree));`}
+          style="border-radius: 50%; height: 100%; width: 100%; padding: 3px; --total-pages: 3; --progress-degree: calc(var(${DYNAMIC_SCROLL_SCROLL_RATIO_CSS_VARIABLE_NAME}, 0) / (var(--total-pages) - 1) * 360deg); background: conic-gradient(red 0deg, red var(--progress-degree), grey var(--progress-degree));"
+          @containerScroll=${args.onContainerScroll}
         >
         </gaia-dynamic-scroll-item>
       </button>
@@ -115,6 +122,5 @@ export default {
 } satisfies Meta<MyArgs>;
 
 export const Default: StoryObj<MyArgs> = {
-  name: "Default",
   args: {},
 };

@@ -10,9 +10,9 @@ export const DYNAMIC_SCROLL_CONTAINER_WIDTH_CSS_VARIABLE_NAME =
 
 /**
  * A container where its content can be styled freely accroding to its scroll ratio.
- * @cssproperty --gaia-dynamic-scroll-scroll-ratio - The scroll ratio of container. It should be read only.
- * @cssproperty --gaia-dynamic-scroll-container-height - The height of container. It should be read only.
- * @cssproperty --gaia-dynamic-scroll-scroll-ratio - The width of container. It should be read only.
+ * @cssproperty --gaia-dynamic-scroll-scroll-ratio - The scroll ratio of container. It should be **READ ONLY**.
+ * @cssproperty --gaia-dynamic-scroll-container-height - The height of container. It should be **READ ONLY**.
+ * @cssproperty --gaia-dynamic-scroll-container-width - The width of container. It should be **READ ONLY**.
  */
 @customElement("gaia-dynamic-scroll")
 export class GaiaDynamicScrollElement extends LitElement {
