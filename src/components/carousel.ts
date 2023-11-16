@@ -92,7 +92,7 @@ export class GaiaCarouselElement extends LitElement {
   /**
    * @internal
    */
-  #refreshTimeoutId?: NodeJS.Timeout;
+  #refreshTimeoutId?: number;
 
   /**
    * The displayed slide index, which starts from 0.
@@ -187,7 +187,7 @@ export class GaiaCarouselElement extends LitElement {
       this.#refreshTimeoutId = setTimeout(
         () => this.#goToNext(),
         this.timeout * 1000
-      );
+      ) as unknown as number;
     }
   }
 }
