@@ -4,6 +4,6 @@ export * from "./components/collapse";
 export * from "./components/dynamic-scroll-item";
 export * from "./components/dynamic-scroll";
 export * from "./components/header";
-export * from "./components/if";
+export * from "./components/choose";
 export * from "./components/nav-item";
 export * from "./components/nav";

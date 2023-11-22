@@ -2,29 +2,29 @@ import { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 
-import "../components/if";
+import "../components/choose";
 
 type MyArgs = {
-  condition?: string;
+  case?: string;
 };
 
 export default {
-  title: "Components/If",
-  component: "gaia-if",
+  title: "Components/Choose",
+  component: "gaia-choose",
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
   argTypes: {
-    condition: { control: "select", options: ["", "chinese", "morse"] },
+    case: { control: "select", options: ["", "chinese", "morse"] },
   },
   render: (args) =>
     html`
-      <gaia-if condition=${ifDefined(args.condition)}>
+      <gaia-choose case=${ifDefined(args.case)}>
         <div>Harry Potter</div>
         <div slot="chinese">哈利波特</div>
         <div slot="morse">.... .- .-. .-. -.-- / .--. --- - - . .-.</div>
-      </gaia-if>
+      </gaia-choose>
     `,
 } satisfies Meta<MyArgs>;
 
